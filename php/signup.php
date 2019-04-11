@@ -11,7 +11,7 @@ $sql = "";
 
 //Add code to check if the user exists first to avoid duplicate entries
 
-//Insert into user the user database with the relevant values
+//Insert the the new user into the database with the relevant values, if the user is an administrator then the prog_id would be null
 $connection = connectToDb();
 if (is_null($prog_id)){
 $sql = "INSERT INTO user (username, password, role) VALUES ('" . $username . "', '" . $password . "', '" . $role . "')";
