@@ -6,9 +6,7 @@ To get started:
 
 1. Create a project in PhpStorm (or other IDE)
 
-As a starting point you can clone the GitHub repository: https://github.com/UCLComputerScience/comp0034-deferredassessment.git 
-
-You do not have to use this code, however it may help to give you a structure from which to start. To use it from within PhpStorm, select “Check out from version control” then “Git” and complete the prompt with the URL above and press Clone, e.g.
+As a starting point you can Fork the GitHub repository: https://github.com/UCLComputerScience/comp0034-deferredassessment.git, this will create a copy in your own GitHub account. You do not have to use this code, however it may help to give you a structure from which to start. To use it from within PhpStorm, select “Check out from version control” then “Git” and complete the prompt with the URL to the repository in your GitHub (e.g. https://github/yourgithubname/comp00340-deferredassessment.git) and press Clone.
  
 You will need to edit the database credentials in the file php/dbcreds.php. The database name, username and password should work, however the port may not. If you are using WAMP this is probably 3306 and not 8889.
 
