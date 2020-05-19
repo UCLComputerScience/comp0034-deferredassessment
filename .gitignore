@@ -131,5 +131,3 @@ dmypy.json
 .pyre/
 
 .idea/
-!/schema.png
-!/wireframe.png
