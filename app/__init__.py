@@ -1,20 +1,20 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-from config import DevConfig
-
 db = SQLAlchemy()
 
 
-def create_app(config_class=DevConfig):
+def create_app(config_class=None):
     """
     Creates an application instance to run using settings from config.py
     :return: A Flask object
     """
     app = Flask(__name__)
+
+    # Configure app wth the settings from config.py
     app.config.from_object(config_class)
 
-    # Initialise the database and create tables
+    # Initialise the database
     db.init_app(app)
 
     from app.models import User, Minor, Programme, Selection
@@ -24,7 +24,7 @@ def create_app(config_class=DevConfig):
             db.Model.metadata.reflect(db.engine)
 
         # If you don't have a database with records then you all need to create the database tables by uncommenting the following lines
-        # from app.models import <add the names of your model classes here>
+        # from app.models import User, Minor, Programme, Selection
         # with app.app_context():
         #     db.create_all()
 
