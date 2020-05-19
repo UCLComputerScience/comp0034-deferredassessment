@@ -19,7 +19,7 @@ def create_app(config_class=DevConfig):
 
     from app.models import User, Minor, Programme, Selection
     with app.app_context():
-        # The following code is used where there is an existing database with records
+        # The following code is used where there is an existing database with records (i.e. if you use the iep_minors.sqlite in this repo)
         with app.app_context():
             db.Model.metadata.reflect(db.engine)
 

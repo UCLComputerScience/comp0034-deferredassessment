@@ -1,36 +1,33 @@
 from app import db
 
-# Create classes for the following tables, you can change these if you wish.
 
-class User(db.Model):
-  '''
-  `user_id` INTEGER PRIMARY KEY,
-  `username` TEXT, NOT NULL,
-  `password` TEXT, NOT NULL,
-  `role` TEXT, NOT NULL,
-  `prog_id` INTEGER, DEFAULT NULL
-  '''
-
+# Classes that represent the tables in the iep_minors.sqlite database. You can change these if you wish.
 
 class Minor(db.Model):
-  '''
-  `minor_id` INTEGER PRIMARY KEY
-  `minor_name` TEXT NOT NULL
-  `max_students` INTEGER NOT NULL
-  '''
+    __tablename__ = "minor"
+    minor_id = db.Column(db.Integer, primary_key=True)
+    minor_name = db.Column(db.Text, nullable=False)
+    max_students = db.Column(db.Integer, nullable=False)
 
 
 class Programme(db.Model):
-  '''
-  `prog_id` INTEGER PRIMARY KEY NOT NULL,
-  `programme_name` varchar(50) NOT NULL
-  '''
+    __tablename__ = "programme"
+    prog_id = db.Column(db.Integer, primary_key=True)
+    programme_name = db.Column(db.Text, nullable=False)
+
+
+class User(db.Model):
+    __tablename__ = "user"
+    user_id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.Text, nullable=False)
+    password = db.Column(db.Text, nullable=False)
+    role = db.Column(db.Text, nullable=False)
+    prog_id = db.Column(db.Integer, db.ForeignKey(Programme.prog_id), nullable=False)
 
 
 class Selection(db.Model):
-  '''
-  `selection_id` INTEGER PRIMARY KEY
-  `user_id` INTEGER, NOT NULL, FOREIGN KEY REFERENCES `user_id` in user TABLE
-  `minor_choice_1` INTEGER, NOT NULL, FOREIGN KEY REFERENCES `minor_id` in minor TABLE
-  `minor_choice_2` INTEGER, NOT NULL, FOREIGN KEY REFERENCES `minor_id` in minor TABLE
-  '''
+    __tablename__ = "selection"
+    selection_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.user_id), nullable=False)
+    minor_choice_1 = db.Column(db.Integer, db.ForeignKey(Minor.minor_id), nullable=False)
+    minor_choice_2 = db.Column(db.Integer, db.ForeignKey(Minor.minor_id), nullable=False)
